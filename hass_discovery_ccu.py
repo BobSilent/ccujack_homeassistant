@@ -5,7 +5,11 @@ import os
 import json
 import requests
 import sys
+import urllib3
+
 from datetime import datetime
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class Ccu2Hass:
    def __init__(self):
@@ -30,6 +34,7 @@ class Ccu2Hass:
       self.use_ccu_device_title = config_general.get("use_ccu_device_title", True)
       self.use_ccu_channel_title = config_general.get("use_ccu_channel_title", False)
       self.url_ccu_jack = config_general.get("url_ccu_jack", "")
+      self.url_ccu_jack_insecure = config_general.get("url_ccu_jack_insecure", False)
 
       # Mandatory for devices: type, entity_type, entity_name
       config_parameter = config_dict.get("parameter", {})
@@ -106,7 +111,7 @@ class Ccu2Hass:
    def _http_request(self, url: str):
       return_dict = {}
       try:
-         request = requests.get(url)
+         request = requests.get(url, verify=not self.url_ccu_jack_insecure)
          return_dict = request.json()
       except:
          pass

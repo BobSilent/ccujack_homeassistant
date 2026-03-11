@@ -9,6 +9,7 @@
       "hass_mqtt_topic_prefix": "homeassistant",
       "ccu_mqtt_topic_prefix": "ccu-jack/device",
       "url_ccu_jack": "http://",
+      "url_ccu_jack_insecure": false,
       "use_ccu_device_title": true,
       "use_ccu_channel_title": false
    },
