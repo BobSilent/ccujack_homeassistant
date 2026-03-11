@@ -2,7 +2,7 @@
 
 import argparse
 import os
-import json
+import commentjson as json
 import requests
 import sys
 from datetime import datetime
