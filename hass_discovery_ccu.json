@@ -102,6 +102,22 @@
                { "type": "ENERGY_COUNTER",     "entity_type": "sensor", "entity_name": "energy",    "device_class": "energy",    "unit": "Wh", "state_class": "total_increasing" }
             ]
          },
+         "HmIP-PSM-2": {
+            "0": [
+               { "type": "ACTUAL_TEMPERATURE", "entity_type": "sensor", "entity_name": "temperature", "device_class": "temperature", "unit": "°C", "enabled": false },
+               { "type": "UPDATE",             "entity_type": "update", "entity_name": "update",      "category": "diagnostic" }
+            ],
+            "3": [
+               { "type": "STATE",              "entity_type": "switch", "entity_name": "switch" }
+            ],
+            "6": [
+               { "type": "CURRENT",            "entity_type": "sensor", "entity_name": "current",   "device_class": "current",   "unit": "mA" },
+               { "type": "POWER",              "entity_type": "sensor", "entity_name": "power",     "device_class": "power",     "unit": "W"  },
+               { "type": "VOLTAGE",            "entity_type": "sensor", "entity_name": "voltage",   "device_class": "voltage",   "unit": "V"  },
+               { "type": "FREQUENCY",          "entity_type": "sensor", "entity_name": "frequency", "device_class": "frequency", "unit": "Hz" },
+               { "type": "ENERGY_COUNTER",     "entity_type": "sensor", "entity_name": "energy",    "device_class": "energy",    "unit": "Wh", "state_class": "total_increasing" }
+            ]
+         },
          "HmIP-BSM": {
             "0": [
                { "type": "ACTUAL_TEMPERATURE", "entity_type": "sensor", "entity_name": "temperature", "device_class": "temperature", "unit": "°C", "enabled": false },
@@ -135,6 +151,19 @@
                { "type": "LEVEL",              "entity_type": "button",            "entity_name": "button_up",   "command_template": "{ \"v\": 1.0 }",  "icon": "mdi:arrow-up" },
                { "type": "LEVEL",              "entity_type": "button",            "entity_name": "button_down", "command_template": "{ \"v\": 0.0 }",  "icon": "mdi:arrow-down" },
                { "type": "STOP",               "entity_type": "button",            "entity_name": "button_stop", "command_template": "{ \"v\": true }", "icon": "mdi:stop" }
+            ]
+         },
+         "HmIP-SWD": {
+            "0": [
+               { "type": "LOW_BAT",            "entity_type": "binary_sensor", "entity_name": "battery",           "category": "diagnostic", "device_class": "battery" },
+               { "type": "SABOTAGE",           "entity_type": "binary_sensor", "entity_name": "sabotage",          "category": "diagnostic", "enabled": false },
+               { "type": "OPERATING_VOLTAGE",  "entity_type": "sensor",        "entity_name": "operating_voltage", "category": "diagnostic", "enabled": false, "device_class": "voltage", "unit": "V" },
+               { "type": "UPDATE",             "entity_type": "update",        "entity_name": "update",            "category": "diagnostic" }
+            ],
+            "1": [
+               { "type": "ALARMSTATE",              "entity_type": "binary_sensor",        "entity_name": "alarmstate", "device_class": "moisture" },
+               { "type": "MOISTURE_DETECTED",              "entity_type": "binary_sensor",        "entity_name": "moisture_detected", "device_class": "moisture" },
+               { "type": "WATERLEVEL_DETECTED",              "entity_type": "binary_sensor",        "entity_name": "waterlevel_detected", "device_class": "moisture" }
             ]
          },
          "HM-Sec-SCo": {
