@@ -9,7 +9,6 @@ import urllib3
 
 from datetime import datetime
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class Ccu2Hass:
    def __init__(self):
@@ -35,6 +34,10 @@ class Ccu2Hass:
       self.use_ccu_channel_title = config_general.get("use_ccu_channel_title", False)
       self.url_ccu_jack = config_general.get("url_ccu_jack", "")
       self.url_ccu_jack_insecure = config_general.get("url_ccu_jack_insecure", False)
+
+      # disable warnings for insecure URL if option is set
+      if self.url_ccu_jack_insecure:
+          urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
       # Mandatory for devices: type, entity_type, entity_name
       config_parameter = config_dict.get("parameter", {})
@@ -113,6 +116,9 @@ class Ccu2Hass:
       try:
          request = requests.get(url, verify=not self.url_ccu_jack_insecure)
          return_dict = request.json()
+      except requests.exceptions.SSLError as e:
+         print(f"Issue connecting to '{url}':\nError: {e}")
+         sys.exit(1)
       except:
          pass
 
